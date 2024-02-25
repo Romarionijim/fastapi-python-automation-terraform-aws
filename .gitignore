@@ -1,0 +1,17 @@
+.idea
+__pycache__
+.pytest_cache
+venv
+.venv
+.DS_STORE
+.git
+.vscode
+.cache
+.env
+test.py
+.terraform/*
+*.tfstate
+*.tfstate.*
+*.tfvars
+*.terraform.*
+*.terraform/
