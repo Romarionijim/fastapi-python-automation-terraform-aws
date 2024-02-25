@@ -21,25 +21,25 @@ resource "aws_security_group" "alb_sg" {
     from_port   = 80
     to_port     = 80
     protocol    = "tcp"
-    cidr_blocks = local.cidr_map["all-traffic-cidr-block"]
+    cidr_blocks = [local.cidr_map["all-traffic-cidr-block"]]
   }
   ingress {
     from_port   = 443
     to_port     = 443
     protocol    = "tcp"
-    cidr_blocks = local.cidr_map["all-traffic-cidr-block"]
+    cidr_blocks = [local.cidr_map["all-traffic-cidr-block"]]
   }
   ingress {
     from_port   = 3000
     to_port     = 3000
     protocol    = "tcp"
-    cidr_blocks = local.cidr_map["all-traffic-cidr-block"]
+    cidr_blocks = [local.cidr_map["all-traffic-cidr-block"]]
   }
   egress {
     from_port   = 0
     to_port     = 0
     protocol    = -1
-    cidr_blocks = local.cidr_map["all-traffic-cidr-block"]
+    cidr_blocks = [local.cidr_map["all-traffic-cidr-block"]]
   }
   tags = {
     Name = "${var.env_name}-alb-sg"
@@ -125,7 +125,7 @@ resource "aws_lb_target_group" "alb_person_target_group" {
 
 resource "aws_lb_target_group" "alb_person_path_params_target_group" {
   target_type      = var.target_group_type
-  name             = "${var.env_name}-person_path_params-tg"
+  name             = "${var.env_name}-person-paths-tg"
   protocol         = "HTTP"
   vpc_id           = var.vpc_id
   port             = var.container_port

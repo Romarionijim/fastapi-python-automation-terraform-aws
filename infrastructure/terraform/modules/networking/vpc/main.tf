@@ -42,9 +42,9 @@ resource "aws_internet_gateway" "internet_gateway" {
 }
 
 resource "aws_route" "route_table_internet_route" {
-  route_table_id              = aws_route_table.vpc_route_table.id
-  destination_ipv6_cidr_block = local.cidr_map["all-traffic-cidr-block"]
-  gateway_id                  = aws_internet_gateway.internet_gateway.id
+  route_table_id         = aws_route_table.vpc_route_table.id
+  destination_cidr_block = local.cidr_map["all-traffic-cidr-block"]
+  gateway_id             = aws_internet_gateway.internet_gateway.id
 }
 
 resource "aws_route_table_association" "rtb_association_1" {

@@ -1,5 +1,5 @@
 import pytest
-from automation.infra.resources.person.person_resource import PersonAPI
+from automation.infra.resources.person.person_api import PersonAPI
 from automation.tests.test_data import *
 from automation.infra.enums.status_codes.status_code import *
 import logging

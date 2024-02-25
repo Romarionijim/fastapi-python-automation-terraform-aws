@@ -5,3 +5,9 @@ variable "target_group_type" {}
 variable "container_port" {}
 variable "lb_type" {}
 variable "domain" {}
+variable "container_name" {}
+variable "host_port" {}
+variable "replicas" {}
+variable "docker_image" {}
+variable "ecs_family" {}
+variable "ecs_launch_type" {}
