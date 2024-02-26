@@ -49,16 +49,6 @@ resource "aws_ecs_service" "ecs_service" {
     container_name   = var.container_name
     container_port   = var.container_port
   }
-#   load_balancer {
-#     target_group_arn = var.alb_person_tg_arn
-#     container_name   = var.container_name
-#     container_port   = var.container_port
-#   }
-#   load_balancer {
-#     target_group_arn = var.alb_person_path_params_tg_arn
-#     container_name   = var.container_name
-#     container_port   = var.container_port
-#   }
   depends_on = [aws_iam_role.ecs_task_role]
 }
 

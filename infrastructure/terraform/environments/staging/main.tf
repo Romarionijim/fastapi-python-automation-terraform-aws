@@ -28,8 +28,6 @@ module "ecs" {
   docker_image    = var.docker_image
   vpc_id          = module.vpc.vpc_id
   alb_root_tg_arn = module.application_load_balancer.alb_root_tg_arn
-  #   alb_person_tg_arn             = module.application_load_balancer.alb_person_tg_arn
-  #   alb_person_path_params_tg_arn = module.application_load_balancer.alb_person_path_param_arn
   alb_sg_id          = module.application_load_balancer.alb_sg_id
   cidr_blocks_object = var.cidr_blocks_object
   container_port     = var.container_port
