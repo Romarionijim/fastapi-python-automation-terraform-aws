@@ -13,12 +13,14 @@ def create_person_class_instance():
     logging.info('created person object')
 
 
+@pytest.mark.order(1)
 def test_get_all_persons(create_person_class_instance):
     person = create_person_class_instance
     persons_length = person.get_all_persons_dict_length()
     assert persons_length == 7
 
 
+@pytest.mark.order(2)
 def test_get_single_person(create_person_class_instance):
     person = create_person_class_instance
     person_response, person_1 = person.get_person(PERSON_1_ID)
@@ -29,6 +31,7 @@ def test_get_single_person(create_person_class_instance):
     assert person_favorite_sport == PERSON_1_FAVORITE_SPORT
 
 
+@pytest.mark.order(3)
 def test_create_new_person(create_person_class_instance):
     person = create_person_class_instance
     response = person.create_new_person()
@@ -49,7 +52,7 @@ def test_create_new_person(create_person_class_instance):
 #     updated_person = person.get_person(PERSON_2_ID)
 #     assert updated_person == person_data
 
-
+@pytest.mark.order(4)
 def test_delete_person(create_person_class_instance):
     person = create_person_class_instance
     data_length = person.get_all_persons_dict_length()
