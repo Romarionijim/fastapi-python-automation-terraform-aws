@@ -11,3 +11,5 @@ variable "replicas" {}
 variable "docker_image" {}
 variable "ecs_family" {}
 variable "ecs_launch_type" {}
+variable "region" {}
+variable "sub_domain" {}

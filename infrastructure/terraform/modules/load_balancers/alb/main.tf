@@ -100,51 +100,51 @@ resource "aws_lb_target_group" "alb_root_target_group" {
   }
 }
 
-resource "aws_lb_target_group" "alb_person_target_group" {
-  target_type      = var.target_group_type
-  name             = "${var.env_name}-person-tg"
-  protocol         = "HTTP"
-  vpc_id           = var.vpc_id
-  port             = var.container_port
-  ip_address_type  = "ipv4"
-  protocol_version = "HTTP1"
-  health_check {
-    enabled             = true
-    protocol            = "HTTP"
-    path                = "/person"
-    healthy_threshold   = 5
-    unhealthy_threshold = 5
-    timeout             = 5
-    interval            = 30
-    matcher             = "200"
-  }
-  tags = {
-    Name = "${var.env_name}-/person-tg"
-  }
-}
+# resource "aws_lb_target_group" "alb_person_target_group" {
+#   target_type      = var.target_group_type
+#   name             = "${var.env_name}-person-tg"
+#   protocol         = "HTTP"
+#   vpc_id           = var.vpc_id
+#   port             = var.container_port
+#   ip_address_type  = "ipv4"
+#   protocol_version = "HTTP1"
+#   health_check {
+#     enabled             = true
+#     protocol            = "HTTP"
+#     path                = "/person"
+#     healthy_threshold   = 5
+#     unhealthy_threshold = 5
+#     timeout             = 5
+#     interval            = 30
+#     matcher             = "200"
+#   }
+#   tags = {
+#     Name = "${var.env_name}-/person-tg"
+#   }
+# }
 
-resource "aws_lb_target_group" "alb_person_path_params_target_group" {
-  target_type      = var.target_group_type
-  name             = "${var.env_name}-person-paths-tg"
-  protocol         = "HTTP"
-  vpc_id           = var.vpc_id
-  port             = var.container_port
-  ip_address_type  = "ipv4"
-  protocol_version = "HTTP1"
-  health_check {
-    enabled             = true
-    protocol            = "HTTP"
-    path                = "/person/*"
-    healthy_threshold   = 5
-    unhealthy_threshold = 5
-    timeout             = 5
-    interval            = 30
-    matcher             = "200"
-  }
-  tags = {
-    Name = "${var.env_name}-/person/path_params-tg"
-  }
-}
+# resource "aws_lb_target_group" "alb_person_path_params_target_group" {
+#   target_type      = var.target_group_type
+#   name             = "${var.env_name}-person-paths-tg"
+#   protocol         = "HTTP"
+#   vpc_id           = var.vpc_id
+#   port             = var.container_port
+#   ip_address_type  = "ipv4"
+#   protocol_version = "HTTP1"
+#   health_check {
+#     enabled             = true
+#     protocol            = "HTTP"
+#     path                = "/person/*"
+#     healthy_threshold   = 5
+#     unhealthy_threshold = 5
+#     timeout             = 5
+#     interval            = 30
+#     matcher             = "200"
+#   }
+#   tags = {
+#     Name = "${var.env_name}-/person/path_params-tg"
+#   }
+# }
 
 resource "aws_alb_listener_rule" "rule_1" {
   listener_arn = aws_lb_listener.secure_https_alb_listener.arn
@@ -165,7 +165,7 @@ resource "aws_alb_listener_rule" "rule_2" {
   priority     = 2
   action {
     type             = "forward"
-    target_group_arn = aws_lb_target_group.alb_person_target_group.arn
+    target_group_arn = aws_lb_target_group.alb_root_target_group.arn
   }
   condition {
     path_pattern {
@@ -179,7 +179,7 @@ resource "aws_alb_listener_rule" "rule_3" {
   priority     = 3
   action {
     type             = "forward"
-    target_group_arn = aws_lb_target_group.alb_person_path_params_target_group.arn
+    target_group_arn = aws_lb_target_group.alb_root_target_group.arn
   }
   condition {
     path_pattern {

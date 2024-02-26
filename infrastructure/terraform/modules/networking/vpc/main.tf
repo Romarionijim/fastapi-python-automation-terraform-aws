@@ -5,7 +5,7 @@ locals {
 resource "aws_vpc" "staging-vpc" {
   cidr_block = local.cidr_map["vpc_cidr_block"]
   tags = {
-    Name = "${var.env_name}"
+    Name = "${var.env_name}-vpc"
   }
 }
 
