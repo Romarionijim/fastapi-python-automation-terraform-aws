@@ -41,7 +41,7 @@ jobs:
       - name: Build Docker Image
         run: |
           echo "build docker image from current code"
-          docker build -f Dockerfile -t ${{ env.DOCKER_IMAGE }}
+          docker build -f Dockerfile -t ${{ env.DOCKER_IMAGE }} .
       - name: Push image to DockerHub
         run: |
           echo "pushing image to DockerHub"
