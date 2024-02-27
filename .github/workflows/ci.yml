@@ -54,12 +54,10 @@ jobs:
         id: init
         run: terraform init
         working-directory: infrastructure/terraform/environments/staging
-        continue-on-error: true
       - name: Terraform plan
         id: plan
         run: terraform plan
         working-directory: infrastructure/terraform/environments/staging
-        continue-on-error: true
       - name: Terraform apply
         run: terraform apply --auto-approve
         working-directory: infrastructure/terraform/environments/staging
