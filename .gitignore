@@ -15,3 +15,4 @@ test.py
 *.tfvars
 *.terraform.*
 *.terraform/
+allure-results/
