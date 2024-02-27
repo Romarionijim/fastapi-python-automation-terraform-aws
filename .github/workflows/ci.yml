@@ -46,8 +46,6 @@ jobs:
         run: |
           echo "pushing image to DockerHub"
           docker push ${{ env.DOCKER_IMAGE }}
-      - name: navigate to terraform staging directory
-        run: cd infrastructure/terraform/environments/staging
       - name: configure Terraform
         uses: hashicorp/setup-terraform@v3
         with: 
@@ -55,11 +53,16 @@ jobs:
       - name: Terraform init
         id: init
         run: terraform init
+        working-directory: infrastructure/terraform/environments/staging
+        continue-on-error: true
       - name: Terraform plan
         id: plan
         run: terraform plan
+        working-directory: infrastructure/terraform/environments/staging
+        continue-on-error: true
       - name: Terraform apply
         run: terraform apply --auto-approve
+        working-directory: infrastructure/terraform/environments/staging
 
   test:
     runs-on: ubuntu-latest
@@ -118,9 +121,10 @@ jobs:
       - name: Terraform init
         id: init
         run: terraform init
+        working-directory: infrastructure/terraform/environments/staging
       - name: Terraform destory
         run: terraform destroy --auto-approve
-        
+        working-directory: infrastructure/terraform/environments/staging
 
         
 
