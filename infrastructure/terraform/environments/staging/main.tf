@@ -19,15 +19,15 @@ module "application_load_balancer" {
 }
 
 module "ecs" {
-  source          = "../../modules/containers/ecs"
-  container_name  = var.container_name
-  host_port       = var.host_port
-  ecs_launch_type = var.ecs_launch_type
-  env_name        = var.env_name
-  replicas        = var.replicas
-  docker_image    = var.docker_image
-  vpc_id          = module.vpc.vpc_id
-  alb_root_tg_arn = module.application_load_balancer.alb_root_tg_arn
+  source             = "../../modules/containers/ecs"
+  container_name     = var.container_name
+  host_port          = var.host_port
+  ecs_launch_type    = var.ecs_launch_type
+  env_name           = var.env_name
+  replicas           = var.replicas
+  docker_image       = var.docker_image
+  vpc_id             = module.vpc.vpc_id
+  alb_root_tg_arn    = module.application_load_balancer.alb_root_tg_arn
   alb_sg_id          = module.application_load_balancer.alb_sg_id
   cidr_blocks_object = var.cidr_blocks_object
   container_port     = var.container_port
