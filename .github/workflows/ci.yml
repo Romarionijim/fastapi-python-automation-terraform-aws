@@ -4,21 +4,21 @@ on:
 env:
   AWS_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY }}
   AWS_SECRET_KEY: ${{ secrets.AWS_SECRET_KEY }}
-  TF_VAR_AVAILABILITY_ZONES: ${{ secrets.AVAILABILITY_ZONES }}
-  TF_VAR_CIDR_BLOCKS_OBJECT: ${{ secrets.CIDR_BLOCKS_OBJECT }}
-  TF_VAR_CONTAINER_NAME: ${{ secrets.CONTAINER_NAME }}
-  TF_VAR_CONTAINER_PORT: ${{ secrets.CONTAINER_PORT }}
-  TF_VAR_DOCKER_IMAGE: ${{ secrets.DOCKER_IMAGE }}
-  TF_VAR_DOMAIN: ${{ secrets.DOMAIN }}
-  TF_VAR_ECS_FAMILY: ${{ secrets.ECS_FAMILY }}
-  TF_VAR_ECS_LAUNCH_TYPE: ${{ secrets.ECS_LAUNCH_TYPE }}
-  TF_VAR_ENV_NAME: ${{ secrets.ENV_NAME }}
-  TF_VAR_HOST_PORT: ${{ secrets.HOST_PORT }}
-  TF_VAR_LB_TYPE: ${{ secrets.LB_TYPE }}
-  TF_VAR_REGION: ${{ secrets.REGION }}
-  TF_VAR_REPLICAS: ${{ secrets.REPLICAS }}
-  TF_VAR_SUB_DOMAIN: ${{ secrets.SUB_DOMAIN }}
-  TF_VAR_TARGET_GROUP_TYPE: ${{ secrets.TARGET_GROUP_TYPE }}
+  TF_VAR_availability_zones: ${{ secrets.AVAILABILITY_ZONES }}
+  TF_VAR_cidr_blocks_object: ${{ secrets.CIDR_BLOCKS_OBJECT }}
+  TF_VAR_container_name: ${{ secrets.CONTAINER_NAME }}
+  TF_VAR_container_port: ${{ secrets.CONTAINER_PORT }}
+  TF_VAR_docker_image: ${{ secrets.DOCKER_IMAGE }}
+  TF_VAR_domain: ${{ secrets.DOMAIN }}
+  TF_VAR_ecs_family: ${{ secrets.ECS_FAMILY }}
+  TF_VAR_ecs_launch_type: ${{ secrets.ECS_LAUNCH_TYPE }}
+  TF_VAR_env_name: ${{ secrets.ENV_NAME }}
+  TF_VAR_host_port: ${{ secrets.HOST_PORT }}
+  TF_VAR_lb_type: ${{ secrets.LB_TYPE }}
+  TF_VAR_region: ${{ secrets.REGION }}
+  TF_VAR_replicas: ${{ secrets.REPLICAS }}
+  TF_VAR_sub_domain: ${{ secrets.SUB_DOMAIN }}
+  TF_VAR_target_group_type: ${{ secrets.TARGET_GROUP_TYPE }}
   DOCKER_HUB_USER: ${{ secrets.DOCKER_HUB_USER }}
   DOCKER_HUB_PASSWORD: ${{ secrets.DOCKER_HUB_PASSWORD }}
   STAGING_DIRECTORY: infrastructure/terraform/environments/staging
