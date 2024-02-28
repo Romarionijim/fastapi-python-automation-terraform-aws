@@ -1,7 +1,5 @@
 variable "env_name" {}
 variable "ecs_family" {}
-variable "container_port" {}
-variable "host_port" {}
 variable "container_name" {}
 variable "docker_image" {}
 variable "replicas" {}

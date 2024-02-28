@@ -24,8 +24,8 @@ resource "aws_ecs_task_definition" "task_definition" {
       essential = true
       portMappings = [
         {
-          containerPort = var.container_port
-          hostPort      = var.host_port
+          containerPort = 3000
+          hostPort      = 3000
         }
       ]
     }
@@ -47,7 +47,7 @@ resource "aws_ecs_service" "ecs_service" {
   load_balancer {
     target_group_arn = var.alb_root_tg_arn
     container_name   = var.container_name
-    container_port   = var.container_port
+    container_port   = 3000
   }
   depends_on = [aws_iam_role.ecs_task_role]
 }

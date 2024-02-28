@@ -82,7 +82,7 @@ resource "aws_lb_target_group" "alb_root_target_group" {
   name             = "${var.env_name}-root-tg"
   protocol         = "HTTP"
   vpc_id           = var.vpc_id
-  port             = var.container_port
+  port             = 3000
   ip_address_type  = "ipv4"
   protocol_version = "HTTP1"
   health_check {

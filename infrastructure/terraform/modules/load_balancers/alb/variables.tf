@@ -11,4 +11,3 @@ variable "subnet_1_id" {}
 variable "subnet_2_id" {}
 variable "domain" {}
 variable "target_group_type" {}
-variable "container_port" {}
