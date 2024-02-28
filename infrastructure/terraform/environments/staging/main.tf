@@ -1,8 +1,12 @@
 module "vpc" {
   source             = "../../modules/networking/vpc"
   env_name           = var.env_name
-  availability_zones = var.availability_zones
-  cidr_blocks_object = var.cidr_blocks_object
+  availability_zones = ["eu-west-1a", "eu-west-1b", "eu-west-1c"]
+  cidr_blocks_object = [{ name = "vpc_cidr_block", cidr_block = "10.0.0.0/16" },
+    { name = "public-subnet-1", cidr_block = "10.0.0.0/24" },
+    { name = "public-subnet-2", cidr_block = "10.0.1.0/24" },
+    { name = "all-traffic-cidr-block", cidr_block = "0.0.0.0/0" },
+  ]
 }
 
 module "application_load_balancer" {
