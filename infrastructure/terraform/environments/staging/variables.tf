@@ -1,5 +1,7 @@
 variable "env_name" {}
-variable "availability_zones" {}
+variable "availability_zones" {
+  type = map(string)
+}
 variable "target_group_type" {}
 variable "lb_type" {}
 variable "domain" {}

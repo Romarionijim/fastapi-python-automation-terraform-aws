@@ -4,7 +4,7 @@ on:
 env:
   AWS_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY }}
   AWS_SECRET_KEY: ${{ secrets.AWS_SECRET_KEY }}
-  TF_VAR_availability_zones: "[\"eu-west-1a\", \"eu-west-1b\", \"eu-west-1c\"]"
+  TF_VAR_availability_zones: "{\"az-1\": \"eu-west-1a\", \"az-2\": \"eu-west-1b\"}"
   TF_VAR_vpc_cidr: "10.0.0.0/16"
   TF_VAR_public_subnet_1_cidr: "10.0.0.0/24" 
   TF_VAR_public_subnet_2_cidr: "10.0.1.0/24"
