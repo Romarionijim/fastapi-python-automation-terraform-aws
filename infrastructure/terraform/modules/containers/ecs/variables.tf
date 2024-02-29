@@ -7,6 +7,5 @@ variable "alb_root_tg_arn" {}
 variable "public_subnet_1" {}
 variable "public_subnet_2" {}
 variable "vpc_id" {}
-variable "cidr_blocks_object" {}
 variable "alb_sg_id" {}
 variable "ecs_launch_type" {}

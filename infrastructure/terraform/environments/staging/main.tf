@@ -1,40 +1,38 @@
 module "vpc" {
-  source             = "../../modules/networking/vpc"
-  env_name           = var.env_name
-  availability_zones = ["eu-west-1a", "eu-west-1b", "eu-west-1c"]
-  cidr_blocks_object = [{ name = "vpc_cidr_block", cidr_block = "10.0.0.0/16" },
-    { name = "public-subnet-1", cidr_block = "10.0.0.0/24" },
-    { name = "public-subnet-2", cidr_block = "10.0.1.0/24" },
-    { name = "all-traffic-cidr-block", cidr_block = "0.0.0.0/0" },
-  ]
+  source               = "../../modules/networking/vpc"
+  env_name             = var.env_name
+  availability_zones   = var.availability_zones
+  public_subnet_1_cidr = var.public_subnet_1_cidr
+  public_subnet_2_cidr = var.public_subnet_2_cidr
+  vpc_cidr             = var.vpc_cidr
+  all_traffic_cidr     = var.all_traffic_cidr
 }
 
 module "application_load_balancer" {
-  source             = "../../modules/load_balancers/alb"
-  target_group_type  = var.target_group_type
-  env_name           = var.env_name
-  cidr_blocks_object = var.cidr_blocks_object
-  subnet_1_id        = module.vpc.subnet_1_id
-  subnet_2_id        = module.vpc.subnet_2_id
-  lb_type            = var.lb_type
-  domain             = var.domain
-  vpc_id             = module.vpc.vpc_id
+  source            = "../../modules/load_balancers/alb"
+  target_group_type = var.target_group_type
+  env_name          = var.env_name
+  subnet_1_id       = module.vpc.subnet_1_id
+  subnet_2_id       = module.vpc.subnet_2_id
+  lb_type           = var.lb_type
+  domain            = var.domain
+  vpc_id            = module.vpc.vpc_id
+  all_traffic_cidr  = var.all_traffic_cidr
 }
 
 module "ecs" {
-  source             = "../../modules/containers/ecs"
-  container_name     = var.container_name
-  ecs_launch_type    = var.ecs_launch_type
-  env_name           = var.env_name
-  replicas           = var.replicas
-  docker_image       = var.docker_image
-  vpc_id             = module.vpc.vpc_id
-  alb_root_tg_arn    = module.application_load_balancer.alb_root_tg_arn
-  alb_sg_id          = module.application_load_balancer.alb_sg_id
-  cidr_blocks_object = var.cidr_blocks_object
-  public_subnet_1    = module.vpc.subnet_1_id
-  public_subnet_2    = module.vpc.subnet_2_id
-  ecs_family         = var.ecs_family
+  source          = "../../modules/containers/ecs"
+  container_name  = var.container_name
+  ecs_launch_type = var.ecs_launch_type
+  env_name        = var.env_name
+  replicas        = var.replicas
+  docker_image    = var.docker_image
+  vpc_id          = module.vpc.vpc_id
+  alb_root_tg_arn = module.application_load_balancer.alb_root_tg_arn
+  alb_sg_id       = module.application_load_balancer.alb_sg_id
+  public_subnet_1 = module.vpc.subnet_1_id
+  public_subnet_2 = module.vpc.subnet_2_id
+  ecs_family      = var.ecs_family
 }
 
 module "route53" {

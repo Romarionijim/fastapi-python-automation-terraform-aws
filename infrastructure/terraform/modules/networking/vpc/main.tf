@@ -1,9 +1,5 @@
-locals {
-  cidr_map = { for block in var.cidr_blocks_object : block.name => block.cidr_block }
-}
-
 resource "aws_vpc" "staging-vpc" {
-  cidr_block = local.cidr_map["vpc_cidr_block"]
+  cidr_block = var.vpc_cidr
   tags = {
     Name = "${var.env_name}-vpc"
   }
@@ -11,7 +7,7 @@ resource "aws_vpc" "staging-vpc" {
 
 resource "aws_subnet" "public_subnet_1" {
   vpc_id            = aws_vpc.staging-vpc.id
-  cidr_block        = local.cidr_map["public-subnet-1"]
+  cidr_block        = var.public_subnet_1_cidr
   availability_zone = var.availability_zones[0]
   tags = {
     Name = "${var.env_name}-public-subnet-1"
@@ -20,7 +16,7 @@ resource "aws_subnet" "public_subnet_1" {
 
 resource "aws_subnet" "public_subnet_2" {
   vpc_id            = aws_vpc.staging-vpc.id
-  cidr_block        = local.cidr_map["public-subnet-2"]
+  cidr_block        = var.public_subnet_2_cidr
   availability_zone = var.availability_zones[1]
   tags = {
     Name = "${var.env_name}-public-subnet-2"
@@ -43,7 +39,7 @@ resource "aws_internet_gateway" "internet_gateway" {
 
 resource "aws_route" "route_table_internet_route" {
   route_table_id         = aws_route_table.vpc_route_table.id
-  destination_cidr_block = local.cidr_map["all-traffic-cidr-block"]
+  destination_cidr_block = var.all_traffic_cidr
   gateway_id             = aws_internet_gateway.internet_gateway.id
 }
 

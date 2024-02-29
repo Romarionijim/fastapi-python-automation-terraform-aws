@@ -1,7 +1,3 @@
-locals {
-  cidr_map = { for block in var.cidr_blocks_object : block.name => block.cidr_block }
-}
-
 resource "aws_ecs_cluster" "ecs_cluster" {
   name = "${var.env_name}-ecs-cluster"
   tags = {
