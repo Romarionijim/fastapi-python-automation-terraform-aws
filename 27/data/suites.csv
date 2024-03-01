@@ -1,0 +1,5 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Fri Mar 01 11:34:48 GMT 2024","Fri Mar 01 11:34:49 GMT 2024","629","automation.tests","person_api_crud_test","","","","test_create_new_person",""
+"passed","Fri Mar 01 11:34:47 GMT 2024","Fri Mar 01 11:34:48 GMT 2024","649","automation.tests","person_api_crud_test","","","","test_get_all_persons",""
+"passed","Fri Mar 01 11:34:49 GMT 2024","Fri Mar 01 11:34:50 GMT 2024","857","automation.tests","person_api_crud_test","","","","test_delete_person",""
+"passed","Fri Mar 01 11:34:48 GMT 2024","Fri Mar 01 11:34:48 GMT 2024","600","automation.tests","person_api_crud_test","","","","test_get_single_person",""
