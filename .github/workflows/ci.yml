@@ -21,6 +21,7 @@ env:
   TF_VAR_sub_domain: ${{ secrets.SUB_DOMAIN }}
   TF_VAR_target_group_type: ${{ secrets.TARGET_GROUP_TYPE }}
   TF_VAR_dynamodb_name: "dynamodb_state_lock_table_romario"
+  TF_VAR_s3_bucket_name: "tf-state-arn-01"
   DOCKER_HUB_USER: ${{ secrets.DOCKER_HUB_USER }}
   DOCKER_HUB_PASSWORD: ${{ secrets.DOCKER_HUB_PASSWORD }}
   STAGING_DIRECTORY: infrastructure/terraform/environments/staging
