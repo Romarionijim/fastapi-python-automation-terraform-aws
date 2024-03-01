@@ -10,7 +10,7 @@ resource "aws_dynamodb_table" "dynamodb_table" {
 
 resource "aws_iam_policy" "dynamodb_lock_policy" {
   name        = "dynamodb_lock_policy"
-  description = "IAM policy for Terraform to manage state locking in DynamoDB"
+  description = "Grant Terraform specific access to manage state locking in DynamoDB"
 
   policy = jsonencode({
     "Version" : "2012-10-17",
@@ -18,19 +18,15 @@ resource "aws_iam_policy" "dynamodb_lock_policy" {
       {
         "Effect" : "Allow",
         "Action" : [
-          "dynamodb:BatchGet*",
-          "dynamodb:DescribeStream",
-          "dynamodb:DescribeTable",
-          "dynamodb:Get*",
-          "dynamodb:Query",
-          "dynamodb:Scan",
-          "dynamodb:BatchWrite*",
-          "dynamodb:CreateTable",
-          "dynamodb:Delete*",
+          "dynamodb:GetItem",
+          "dynamodb:PutItem",
           "dynamodb:Update*",
-          "dynamodb:PutItem"
+          "dynamodb:DeleteItem",
         ],
-        "Resource" : "arn:aws:dynamodb:*:*:table/${var.dynamodb_name}"
+        "Resource" : [
+          "arn:aws:dynamodb:*:*:table/${var.dynamodb_name}",
+          "arn:aws:dynamodb:*:*:table/${var.dynamodb_name}/index/*"
+        ]
       }
     ]
   })
