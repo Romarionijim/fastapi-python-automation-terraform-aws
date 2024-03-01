@@ -16,3 +16,5 @@ variable "vpc_cidr" {}
 variable "public_subnet_1_cidr" {}
 variable "public_subnet_2_cidr" {}
 variable "all_traffic_cidr" {}
+variable "s3_bucket_name" {}
+variable "dynamodb_name" {}

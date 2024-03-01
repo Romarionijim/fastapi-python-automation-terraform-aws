@@ -43,3 +43,13 @@ module "route53" {
   sub_domain   = var.sub_domain
   alb_zone_id  = module.application_load_balancer.alb_zone_id
 }
+
+module "s3_bucket" {
+  source         = "../../modules/storage/s3"
+  s3_bucket_name = var.s3_bucket_name
+}
+
+module "dynamo_db" {
+  source = "../../modules/database/dynamodb"
+  dynamodb_name = var.dynamodb_name
+}
