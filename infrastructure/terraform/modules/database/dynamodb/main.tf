@@ -41,7 +41,7 @@ resource "aws_iam_role" "terraform_dynamodb_role" {
         "Sid" : "",
         "Effect" : "Allow",
         "Principal" : {
-          "Service" : "sts.amazonaws.com"
+          "Service" : "dynamodb.amazonaws.com"
         },
         "Action" : "sts:AssumeRole"
       }
