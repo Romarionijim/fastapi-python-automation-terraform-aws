@@ -125,6 +125,7 @@ jobs:
         working-directory: ${{ env.STAGING_DIRECTORY }}
       - name: Terraform plan destroy
         run: terraform plan -destroy -lock=false
+        working-directory: ${{ env.STAGING_DIRECTORY }}
       - name: Terraform destory
         id: destroy
         run: terraform destroy --auto-approve -input=false -lock=false
